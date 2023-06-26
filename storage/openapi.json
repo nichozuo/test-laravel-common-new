@@ -1,0 +1,309 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "示例 API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://example.com/api/v1"
+        }
+    ],
+    "paths": {
+        "admin": {
+            "/users": {
+                "get": {
+                    "summary": "获取用户列表",
+                    "responses": {
+                        "200": {
+                            "description": "成功获取用户列表",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/components/schemas/User"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "post": {
+                    "summary": "创建新用户",
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "201": {
+                            "description": "用户创建成功",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "/users/{userId}": {
+                "get": {
+                    "summary": "获取指定用户信息",
+                    "parameters": [
+                        {
+                            "name": "userId",
+                            "in": "path",
+                            "description": "用户ID",
+                            "required": true,
+                            "schema": {
+                                "type": "integer"
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "成功获取用户信息",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "put": {
+                    "summary": "更新指定用户信息",
+                    "parameters": [
+                        {
+                            "name": "userId",
+                            "in": "path",
+                            "description": "用户ID",
+                            "required": true,
+                            "schema": {
+                                "type": "integer"
+                            }
+                        }
+                    ],
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "用户信息更新成功",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "delete": {
+                    "summary": "删除指定用户",
+                    "parameters": [
+                        {
+                            "name": "userId",
+                            "in": "path",
+                            "description": "用户ID",
+                            "required": true,
+                            "schema": {
+                                "type": "integer"
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "204": {
+                            "description": "用户删除成功"
+                        }
+                    }
+                }
+            },
+            "/products": {
+                "get": {
+                    "summary": "获取产品列表",
+                    "responses": {
+                        "200": {
+                            "description": "成功获取产品列表",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Product"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "post": {
+                    "summary": "创建新产品",
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "201": {
+                            "description": "产品创建成功",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "/products/{productId}": {
+                "get": {
+                    "summary": "获取指定产品信息",
+                    "parameters": [
+                        {
+                            "name": "productId",
+                            "in": "path",
+                            "description": "产品ID",
+                            "required": true,
+                            "schema": {
+                                "type": "integer"
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "成功获取产品信息",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "put": {
+                    "summary": "更新指定产品信息",
+                    "parameters": [
+                        {
+                            "name": "productId",
+                            "in": "path",
+                            "description": "产品ID",
+                            "required": true,
+                            "schema": {
+                                "type": "integer"
+                            }
+                        }
+                    ],
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "产品信息更新成功",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "delete": {
+                    "summary": "删除指定产品",
+                    "parameters": [
+                        {
+                            "name": "productId",
+                            "in": "path",
+                            "description": "产品ID",
+                            "required": true,
+                            "schema": {
+                                "type": "integer"
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "204": {
+                            "description": "产品删除成功"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    }
+                }
+            },
+            "Product": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                }
+            }
+        }
+    }
+}

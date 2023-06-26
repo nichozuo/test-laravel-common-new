@@ -4,7 +4,10 @@ namespace App\Enums;
 
 use LaravelCommonNew\App\Traits\EnumTrait;
 
-enum GirlsTypeEnum: string
+/**
+ * @intro HelloTypeEnum
+ */
+enum HelloTypeEnum: string
 {
     use EnumTrait;
 
@@ -13,12 +16,5 @@ enum GirlsTypeEnum: string
      * @value Value
      * @color #ff0000
      */
-    case Label1 = 'Value1';
-
-    /**
-     * @label Label
-     * @value Value
-     * @color #ff0000
-     */
-    case Label2 = 'Value2';
+    case Label = 'Value';
 }
