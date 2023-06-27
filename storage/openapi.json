@@ -1,309 +1,414 @@
 {
-    "openapi": "3.0.0",
+    "openapi": "3.1.0",
     "info": {
-        "title": "示例 API",
+        "title": "Laravel test",
+        "description": "",
         "version": "1.0.0"
     },
-    "servers": [
+    "tags": [
         {
-            "url": "https://example.com/api/v1"
+            "name": "Admin"
+        },
+        {
+            "name": "Admin/AuthController"
         }
     ],
     "paths": {
-        "admin": {
-            "/users": {
-                "get": {
-                    "summary": "获取用户列表",
-                    "responses": {
-                        "200": {
-                            "description": "成功获取用户列表",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "type": "array",
-                                        "items": {
-                                            "$ref": "#/components/schemas/User"
+        "/admin/auth/login": {
+            "post": {
+                "summary": "管理员登录",
+                "x-apifox-folder": "Admin/AuthController",
+                "x-apifox-status": "released",
+                "deprecated": false,
+                "description": "管理员登录",
+                "tags": [
+                    "Admin/AuthController"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "phone": {
+                                        "type": "string",
+                                        "description": "用户名",
+                                        "example": "13800138000"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "description": "密码",
+                                        "example": "123123"
+                                    }
+                                },
+                                "required": [
+                                    "phone",
+                                    "password"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "user": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer"
+                                                        },
+                                                        "phone": {
+                                                            "type": "string"
+                                                        },
+                                                        "real_name": {
+                                                            "type": "null"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "id",
+                                                        "phone",
+                                                        "real_name"
+                                                    ],
+                                                    "x-apifox-ignore-properties": [],
+                                                    "x-apifox-orders": [
+                                                        "id",
+                                                        "phone",
+                                                        "real_name"
+                                                    ]
+                                                },
+                                                "token": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "access_token": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "access_token"
+                                                    ],
+                                                    "x-apifox-ignore-properties": [],
+                                                    "x-apifox-orders": [
+                                                        "access_token"
+                                                    ]
+                                                },
+                                                "permissions": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer"
+                                                        },
+                                                        "name": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": {
+                                                            "type": "string"
+                                                        },
+                                                        "type": {
+                                                            "type": "null"
+                                                        },
+                                                        "url": {
+                                                            "type": "null"
+                                                        },
+                                                        "icon": {
+                                                            "type": "null"
+                                                        },
+                                                        "_lft": {
+                                                            "type": "integer"
+                                                        },
+                                                        "parent_id": {
+                                                            "type": "null"
+                                                        },
+                                                        "children": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "integer"
+                                                                    },
+                                                                    "name": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "title": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "type": {
+                                                                        "type": "null"
+                                                                    },
+                                                                    "url": {
+                                                                        "type": "string",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "icon": {
+                                                                        "type": "null"
+                                                                    },
+                                                                    "_lft": {
+                                                                        "type": "integer"
+                                                                    },
+                                                                    "parent_id": {
+                                                                        "type": "integer"
+                                                                    },
+                                                                    "children": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "id": {
+                                                                                    "type": "integer"
+                                                                                },
+                                                                                "name": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "title": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "type": {
+                                                                                    "type": "null"
+                                                                                },
+                                                                                "url": {
+                                                                                    "type": "null"
+                                                                                },
+                                                                                "icon": {
+                                                                                    "type": "null"
+                                                                                },
+                                                                                "_lft": {
+                                                                                    "type": "integer"
+                                                                                },
+                                                                                "parent_id": {
+                                                                                    "type": "integer"
+                                                                                },
+                                                                                "children": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "object",
+                                                                                        "properties": {
+                                                                                            "id": {
+                                                                                                "type": "integer"
+                                                                                            },
+                                                                                            "name": {
+                                                                                                "type": "string"
+                                                                                            },
+                                                                                            "title": {
+                                                                                                "type": "string"
+                                                                                            },
+                                                                                            "type": {
+                                                                                                "type": "null"
+                                                                                            },
+                                                                                            "url": {
+                                                                                                "type": "string"
+                                                                                            },
+                                                                                            "icon": {
+                                                                                                "type": "null"
+                                                                                            },
+                                                                                            "_lft": {
+                                                                                                "type": "integer"
+                                                                                            },
+                                                                                            "parent_id": {
+                                                                                                "type": "integer"
+                                                                                            },
+                                                                                            "children": {
+                                                                                                "type": "array",
+                                                                                                "items": {
+                                                                                                    "type": "string"
+                                                                                                }
+                                                                                            }
+                                                                                        },
+                                                                                        "required": [
+                                                                                            "id",
+                                                                                            "name",
+                                                                                            "title",
+                                                                                            "type",
+                                                                                            "url",
+                                                                                            "icon",
+                                                                                            "_lft",
+                                                                                            "parent_id",
+                                                                                            "children"
+                                                                                        ],
+                                                                                        "x-apifox-ignore-properties": [],
+                                                                                        "x-apifox-orders": [
+                                                                                            "id",
+                                                                                            "name",
+                                                                                            "title",
+                                                                                            "type",
+                                                                                            "url",
+                                                                                            "icon",
+                                                                                            "_lft",
+                                                                                            "parent_id",
+                                                                                            "children"
+                                                                                        ]
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            "required": [
+                                                                                "id",
+                                                                                "name",
+                                                                                "title",
+                                                                                "type",
+                                                                                "url",
+                                                                                "icon",
+                                                                                "_lft",
+                                                                                "parent_id",
+                                                                                "children"
+                                                                            ],
+                                                                            "x-apifox-ignore-properties": [],
+                                                                            "x-apifox-orders": [
+                                                                                "id",
+                                                                                "name",
+                                                                                "title",
+                                                                                "type",
+                                                                                "url",
+                                                                                "icon",
+                                                                                "_lft",
+                                                                                "parent_id",
+                                                                                "children"
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "id",
+                                                                    "name",
+                                                                    "title",
+                                                                    "type",
+                                                                    "url",
+                                                                    "icon",
+                                                                    "_lft",
+                                                                    "parent_id",
+                                                                    "children"
+                                                                ],
+                                                                "x-apifox-ignore-properties": [],
+                                                                "x-apifox-orders": [
+                                                                    "id",
+                                                                    "name",
+                                                                    "title",
+                                                                    "type",
+                                                                    "url",
+                                                                    "icon",
+                                                                    "_lft",
+                                                                    "parent_id",
+                                                                    "children"
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "id",
+                                                        "name",
+                                                        "title",
+                                                        "type",
+                                                        "url",
+                                                        "icon",
+                                                        "_lft",
+                                                        "parent_id",
+                                                        "children"
+                                                    ],
+                                                    "x-apifox-ignore-properties": [],
+                                                    "x-apifox-orders": [
+                                                        "id",
+                                                        "name",
+                                                        "title",
+                                                        "type",
+                                                        "url",
+                                                        "icon",
+                                                        "_lft",
+                                                        "parent_id",
+                                                        "children"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "user",
+                                                "token",
+                                                "permissions"
+                                            ],
+                                            "x-apifox-ignore-properties": [],
+                                            "x-apifox-orders": [
+                                                "user",
+                                                "token",
+                                                "permissions"
+                                            ]
                                         }
-                                    }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "data"
+                                    ],
+                                    "x-apifox-ignore-properties": [],
+                                    "x-apifox-orders": [
+                                        "code",
+                                        "data"
+                                    ]
                                 }
                             }
                         }
                     }
                 },
-                "post": {
-                    "summary": "创建新用户",
-                    "requestBody": {
-                        "required": true,
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/User"
-                                }
-                            }
-                        }
-                    },
-                    "responses": {
-                        "201": {
-                            "description": "用户创建成功",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "$ref": "#/components/schemas/User"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "/users/{userId}": {
-                "get": {
-                    "summary": "获取指定用户信息",
-                    "parameters": [
-                        {
-                            "name": "userId",
-                            "in": "path",
-                            "description": "用户ID",
-                            "required": true,
-                            "schema": {
-                                "type": "integer"
-                            }
-                        }
-                    ],
-                    "responses": {
-                        "200": {
-                            "description": "成功获取用户信息",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "$ref": "#/components/schemas/User"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "put": {
-                    "summary": "更新指定用户信息",
-                    "parameters": [
-                        {
-                            "name": "userId",
-                            "in": "path",
-                            "description": "用户ID",
-                            "required": true,
-                            "schema": {
-                                "type": "integer"
-                            }
-                        }
-                    ],
-                    "requestBody": {
-                        "required": true,
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/User"
-                                }
-                            }
-                        }
-                    },
-                    "responses": {
-                        "200": {
-                            "description": "用户信息更新成功",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "$ref": "#/components/schemas/User"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "delete": {
-                    "summary": "删除指定用户",
-                    "parameters": [
-                        {
-                            "name": "userId",
-                            "in": "path",
-                            "description": "用户ID",
-                            "required": true,
-                            "schema": {
-                                "type": "integer"
-                            }
-                        }
-                    ],
-                    "responses": {
-                        "204": {
-                            "description": "用户删除成功"
-                        }
-                    }
-                }
-            },
-            "/products": {
-                "get": {
-                    "summary": "获取产品列表",
-                    "responses": {
-                        "200": {
-                            "description": "成功获取产品列表",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "type": "array",
-                                        "items": {
-                                            "$ref": "#/components/schemas/Product"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "post": {
-                    "summary": "创建新产品",
-                    "requestBody": {
-                        "required": true,
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Product"
-                                }
-                            }
-                        }
-                    },
-                    "responses": {
-                        "201": {
-                            "description": "产品创建成功",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "$ref": "#/components/schemas/Product"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "/products/{productId}": {
-                "get": {
-                    "summary": "获取指定产品信息",
-                    "parameters": [
-                        {
-                            "name": "productId",
-                            "in": "path",
-                            "description": "产品ID",
-                            "required": true,
-                            "schema": {
-                                "type": "integer"
-                            }
-                        }
-                    ],
-                    "responses": {
-                        "200": {
-                            "description": "成功获取产品信息",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "$ref": "#/components/schemas/Product"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "put": {
-                    "summary": "更新指定产品信息",
-                    "parameters": [
-                        {
-                            "name": "productId",
-                            "in": "path",
-                            "description": "产品ID",
-                            "required": true,
-                            "schema": {
-                                "type": "integer"
-                            }
-                        }
-                    ],
-                    "requestBody": {
-                        "required": true,
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Product"
-                                }
-                            }
-                        }
-                    },
-                    "responses": {
-                        "200": {
-                            "description": "产品信息更新成功",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "$ref": "#/components/schemas/Product"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "delete": {
-                    "summary": "删除指定产品",
-                    "parameters": [
-                        {
-                            "name": "productId",
-                            "in": "path",
-                            "description": "产品ID",
-                            "required": true,
-                            "schema": {
-                                "type": "integer"
-                            }
-                        }
-                    ],
-                    "responses": {
-                        "204": {
-                            "description": "产品删除成功"
-                        }
-                    }
-                }
+                "x-run-in-apifox": "https://apifox.com/web/project/2930674/apis/api-91369431-run"
             }
         }
     },
     "components": {
         "schemas": {
-            "User": {
+            "admins": {
                 "type": "object",
                 "properties": {
                     "id": {
-                        "type": "integer"
+                        "type": "integer",
+                        "format": "uint32"
                     },
-                    "name": {
-                        "type": "string"
-                    },
-                    "email": {
+                    "phone": {
                         "type": "string",
-                        "format": "email"
+                        "maxLength": 11,
+                        "description": "手机号2",
+                        "title": "手机号1"
+                    },
+                    "password": {
+                        "type": "string",
+                        "maxLength": 128,
+                        "description": "密码2",
+                        "title": "密码1"
                     }
-                }
-            },
-            "Product": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "integer"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "description": {
-                        "type": "string"
-                    },
-                    "price": {
-                        "type": "number",
-                        "format": "double"
-                    }
+                },
+                "x-apifox-orders": [
+                    "id",
+                    "phone",
+                    "password"
+                ],
+                "required": [
+                    "id",
+                    "phone",
+                    "password"
+                ],
+                "x-apifox-ignore-properties": [],
+                "x-apifox-folder": ""
+            }
+        }
+    },
+    "examples": {
+        "application/json": {
+            "code": 200,
+            "data": {
+                "user": {
+                    "id": 1,
+                    "name": "admin",
+                    "phone": "18888888888",
+                    "email": ""
                 }
             }
         }
-    }
+    },
+    "servers": []
 }

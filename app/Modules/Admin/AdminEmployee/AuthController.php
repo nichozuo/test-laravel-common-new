@@ -4,11 +4,14 @@ namespace App\Modules\Admin\AdminEmployee;
 
 use App\Http\Controllers\Controller;
 
+/**
+ * @intro 员工管理
+ */
 class AuthController extends Controller
 {
     /**
      * @intro 登录
-     * @skipRouter true
+     * @skipInRouter true
      * @skipAuth true
      * @skipWrap true
      * @method GET|POST
