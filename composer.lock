@@ -2802,7 +2802,7 @@
             "dist": {
                 "type": "path",
                 "url": "../laravel-common-new",
-                "reference": "93721b4003f1eaafa4aba9fe723f1deec2ae7844"
+                "reference": "726563c697a2837aca0c634a2603f6215de096fb"
             },
             "require": {
                 "cebe/php-openapi": "^1.7",

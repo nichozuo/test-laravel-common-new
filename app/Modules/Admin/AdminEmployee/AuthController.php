@@ -3,6 +3,7 @@
 namespace App\Modules\Admin\AdminEmployee;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 /**
  * @intro 员工管理
@@ -11,14 +12,18 @@ class AuthController extends Controller
 {
     /**
      * @intro 登录
-     * @skipInRouter true
      * @skipAuth true
-     * @skipWrap true
-     * @method GET|POST
-     * @return string
+     * @param Request $request
+     * @return array
      */
-    public function login(): string
+    public function login(Request $request): array
     {
-        return '1';
+        $params = $request->validate([
+            'username' => 'required|string', # 用户名
+            'password' => 'required|string', # 密码
+        ]);
+        return [
+            $params
+        ];
     }
 }
