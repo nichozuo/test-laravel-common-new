@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Modules\Admin\AdminEmployee;
+namespace App\Modules\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Modules\AdminBaseController;
 use Illuminate\Http\Request;
 
 /**
- * @intro 员工管理
+ * @intro 登录鉴权
  */
-class AuthController extends Controller
+class AuthController extends AdminBaseController
 {
     /**
      * @intro 登录

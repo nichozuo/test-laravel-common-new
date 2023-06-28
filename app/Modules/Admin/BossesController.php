@@ -1,19 +1,19 @@
 <?php
 
 
-namespace App\Modules\Admin\AdminEmployee;
+namespace App\Modules\Admin;
 
 
-use App\Http\Controllers\Controller;
 use App\Models\Bosses;
-use Exception;
+use App\Modules\AdminBaseController;
 use Illuminate\Http\Request;
+use Exception;
 use LaravelCommonNew\App\Exceptions\Err;
 
 /**
  * @intro 老板
  */
-class BossesController extends Controller
+class BossesController extends AdminBaseController
 {
     /**
      * @intro 列表
@@ -40,8 +40,6 @@ class BossesController extends Controller
     {
         $params = $request->validate([
             'name' => 'required|string', # 名字
-			'created_at' => 'nullable|date', #
-			'updated_at' => 'nullable|date', #
         ]);
         Bosses::unique($params, ['name'], '名称');
         Bosses::create($params);
@@ -57,8 +55,6 @@ class BossesController extends Controller
         $params = $request->validate([
             'id' => 'required|integer', # id
             'name' => 'required|string', # 名字
-			'created_at' => 'nullable|date', #
-			'updated_at' => 'nullable|date', #
         ]);
         Bosses::unique($params, ['name'], '名称');
         Bosses::idp($params)->update($params);

@@ -1,19 +1,19 @@
 <?php
 
 
-namespace App\Modules\Admin\AdminEmployee;
+namespace App\Modules\Admin;
 
 
-use App\Http\Controllers\Controller;
-use App\Models\Girls;
-use Exception;
+use App\Models\Companies;
+use App\Modules\AdminBaseController;
 use Illuminate\Http\Request;
+use Exception;
 use LaravelCommonNew\App\Exceptions\Err;
 
 /**
- * @intro 女孩
+ * @intro 公司
  */
-class GirlsController extends Controller
+class CompaniesController extends AdminBaseController
 {
     /**
      * @intro 列表
@@ -26,7 +26,7 @@ class GirlsController extends Controller
         $params = $request->validate([
             'name' => 'nullable|string', # 模糊搜索：名称
         ]);
-        return Girls::ifWhereLike($params, 'name')
+        return Companies::ifWhereLike($params, 'name')
             ->order()
             ->paginate($this->perPage());
     }
@@ -39,12 +39,11 @@ class GirlsController extends Controller
     public function store(Request $request): void
     {
         $params = $request->validate([
-            'type' => 'required|string', # 类型:Value1,Value2
+            'bosses_id' => 'required|integer', # 所属老板
 			'name' => 'required|string', # 名字
-			'phone' => 'required|string', # 手机号
         ]);
-        Girls::unique($params, ['name'], '名称');
-        Girls::create($params);
+        Companies::unique($params, ['name'], '名称');
+        Companies::create($params);
     }
 
     /**
@@ -56,30 +55,55 @@ class GirlsController extends Controller
     {
         $params = $request->validate([
             'id' => 'required|integer', # id
-            'type' => 'required|string', # 类型:Value1,Value2
+            'bosses_id' => 'required|integer', # 所属老板
 			'name' => 'required|string', # 名字
-			'phone' => 'required|string', # 手机号
         ]);
-        Girls::unique($params, ['name'], '名称');
-        Girls::idp($params)->update($params);
+        Companies::unique($params, ['name'], '名称');
+        Companies::idp($params)->update($params);
     }
 
     /**
      * @intro 查看
      * @param Request $request
-     * @return Girls
+     * @return Companies
      * @throws Err
      */
-    public function show(Request $request): Girls
+    public function show(Request $request): Companies
     {
         $params = $request->validate([
             'id' => 'required|integer', # id
         ]);
-        return Girls::GetById($params['id']);
+        return Companies::GetById($params['id']);
     }
 
     /**
      * @intro 删除
+     * @param Request $request
+     * @return void
+     */
+    public function softDelete(Request $request): void
+    {
+        $params = $request->validate([
+            'id' => 'required|integer', # id
+        ]);
+        Companies::idp($params)->delete();
+    }
+
+    /**
+     * @intro 恢复软删除
+     * @param Request $request
+     * @return void
+     */
+    public function restore(Request $request): void
+    {
+        $params = $request->validate([
+            'id' => 'required|integer', # id
+        ]);
+        Companies::withTrashed()->idp($params)->restore();
+    }
+
+    /**
+     * @intro 强制删除
      * @param Request $request
      * @return void
      */
@@ -88,6 +112,6 @@ class GirlsController extends Controller
         $params = $request->validate([
             'id' => 'required|integer', # id
         ]);
-        Girls::idp($params)->delete();
+        Companies::withTrashed()->idp($params)->forceDelete();
     }
 }

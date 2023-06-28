@@ -4,16 +4,16 @@
 namespace App\Modules\Admin;
 
 
-use App\Http\Controllers\Controller;
-use App\Models\Hellos;
+use App\Models\Girls;
+use App\Modules\AdminBaseController;
 use Illuminate\Http\Request;
 use Exception;
 use LaravelCommonNew\App\Exceptions\Err;
 
 /**
- * @intro 
+ * @intro 女孩
  */
-class HellosController extends Controller
+class GirlsController extends AdminBaseController
 {
     /**
      * @intro 列表
@@ -26,7 +26,7 @@ class HellosController extends Controller
         $params = $request->validate([
             'name' => 'nullable|string', # 模糊搜索：名称
         ]);
-        return Hellos::ifWhereLike($params, 'name')
+        return Girls::ifWhereLike($params, 'name')
             ->order()
             ->paginate($this->perPage());
     }
@@ -39,10 +39,12 @@ class HellosController extends Controller
     public function store(Request $request): void
     {
         $params = $request->validate([
-            'name' => 'required|string', # 
+            'type' => 'required|string', # 类型:Value1,Value2
+			'name' => 'required|string', # 名字
+			'phone' => 'required|string', # 手机号
         ]);
-        Hellos::unique($params, ['name'], '名称');
-        Hellos::create($params);
+        Girls::unique($params, ['name'], '名称');
+        Girls::create($params);
     }
 
     /**
@@ -54,24 +56,26 @@ class HellosController extends Controller
     {
         $params = $request->validate([
             'id' => 'required|integer', # id
-            'name' => 'required|string', # 
+            'type' => 'required|string', # 类型:Value1,Value2
+			'name' => 'required|string', # 名字
+			'phone' => 'required|string', # 手机号
         ]);
-        Hellos::unique($params, ['name'], '名称');
-        Hellos::idp($params)->update($params);
+        Girls::unique($params, ['name'], '名称');
+        Girls::idp($params)->update($params);
     }
 
     /**
      * @intro 查看
      * @param Request $request
-     * @return Hellos
+     * @return Girls
      * @throws Err
      */
-    public function show(Request $request): Hellos
+    public function show(Request $request): Girls
     {
         $params = $request->validate([
             'id' => 'required|integer', # id
         ]);
-        return Hellos::GetById($params['id']);
+        return Girls::GetById($params['id']);
     }
 
     /**
@@ -84,6 +88,6 @@ class HellosController extends Controller
         $params = $request->validate([
             'id' => 'required|integer', # id
         ]);
-        Hellos::idp($params)->delete();
+        Girls::idp($params)->delete();
     }
 }

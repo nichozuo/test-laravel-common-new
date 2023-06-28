@@ -4,890 +4,972 @@
         "title": "Laravel",
         "version": "0.0.x"
     },
-    "tags": [],
     "servers": [
         {
-            "description": "Server Address",
-            "url": "http://localhost:8000/api/"
+            "url": "http:\/\/localhost:8000\/api\/",
+            "description": "Server Address"
         }
     ],
     "paths": {
-        "/admin/admin_employee/auth/login": {
+        "\/admin\/auth\/login": {
             "post": {
-                "summary": "登录",
-                "x-apifox-folder": "Admin/AdminEmployee/AuthController",
-                "description": "登录",
                 "tags": [
-                    "Admin/AdminEmployee/AuthController"
+                    "Admin\/AuthController"
                 ],
-                "parameters": [],
+                "summary": "登录",
+                "description": "登录",
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
+                                "required": [
+                                    "username",
+                                    "password"
+                                ],
                                 "type": "object",
                                 "properties": {
                                     "username": {
                                         "type": "string",
-                                        "description": "用户名"
+                                        "description": "用户名",
+                                        "required": true
                                     },
                                     "password": {
                                         "type": "string",
-                                        "description": "密码"
+                                        "description": "密码",
+                                        "required": true
                                     }
-                                },
-                                "required": [
-                                    "username",
-                                    "password"
-                                ]
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/admin_employee/bosses/list": {
+        "\/admin\/bosses\/list": {
             "post": {
+                "tags": [
+                    "Admin\/BossesController"
+                ],
                 "summary": "列表",
-                "x-apifox-folder": "Admin/AdminEmployee/BossesController",
                 "description": "列表",
-                "tags": [
-                    "Admin/AdminEmployee/BossesController"
-                ],
-                "parameters": [],
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
+                                "required": [],
                                 "type": "object",
                                 "properties": {
                                     "name": {
                                         "type": "string",
-                                        "description": "模糊搜索：名称"
+                                        "description": "模糊搜索：名称",
+                                        "required": false
                                     }
-                                },
-                                "required": []
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/admin_employee/bosses/store": {
+        "\/admin\/bosses\/store": {
             "post": {
-                "summary": "添加",
-                "x-apifox-folder": "Admin/AdminEmployee/BossesController",
-                "description": "添加",
                 "tags": [
-                    "Admin/AdminEmployee/BossesController"
+                    "Admin\/BossesController"
                 ],
-                "parameters": [],
+                "summary": "添加",
+                "description": "添加",
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "description": "名字"
-                                    },
-                                    "created_at": {
-                                        "type": "date",
-                                        "description": ""
-                                    },
-                                    "updated_at": {
-                                        "type": "date",
-                                        "description": ""
-                                    }
-                                },
                                 "required": [
                                     "name"
-                                ]
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "名字",
+                                        "required": true
+                                    }
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/admin_employee/bosses/update": {
+        "\/admin\/bosses\/update": {
             "post": {
-                "summary": "修改",
-                "x-apifox-folder": "Admin/AdminEmployee/BossesController",
-                "description": "修改",
                 "tags": [
-                    "Admin/AdminEmployee/BossesController"
+                    "Admin\/BossesController"
                 ],
-                "parameters": [],
+                "summary": "修改",
+                "description": "修改",
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "type": "integer",
-                                        "description": "id"
-                                    },
-                                    "name": {
-                                        "type": "string",
-                                        "description": "名字"
-                                    },
-                                    "created_at": {
-                                        "type": "date",
-                                        "description": ""
-                                    },
-                                    "updated_at": {
-                                        "type": "date",
-                                        "description": ""
-                                    }
-                                },
                                 "required": [
                                     "id",
                                     "name"
-                                ]
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "description": "id",
+                                        "required": true
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "description": "名字",
+                                        "required": true
+                                    }
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/admin_employee/bosses/show": {
+        "\/admin\/bosses\/show": {
             "post": {
+                "tags": [
+                    "Admin\/BossesController"
+                ],
                 "summary": "查看",
-                "x-apifox-folder": "Admin/AdminEmployee/BossesController",
                 "description": "查看",
-                "tags": [
-                    "Admin/AdminEmployee/BossesController"
-                ],
-                "parameters": [],
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
+                                "required": [
+                                    "id"
+                                ],
                                 "type": "object",
                                 "properties": {
                                     "id": {
                                         "type": "integer",
-                                        "description": "id"
+                                        "description": "id",
+                                        "required": true
                                     }
-                                },
-                                "required": [
-                                    "id"
-                                ]
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/admin_employee/bosses/delete": {
+        "\/admin\/bosses\/delete": {
             "post": {
+                "tags": [
+                    "Admin\/BossesController"
+                ],
                 "summary": "删除",
-                "x-apifox-folder": "Admin/AdminEmployee/BossesController",
                 "description": "删除",
-                "tags": [
-                    "Admin/AdminEmployee/BossesController"
-                ],
-                "parameters": [],
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
+                                "required": [
+                                    "id"
+                                ],
                                 "type": "object",
                                 "properties": {
                                     "id": {
                                         "type": "integer",
-                                        "description": "id"
+                                        "description": "id",
+                                        "required": true
                                     }
-                                },
-                                "required": [
-                                    "id"
-                                ]
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/admin_employee/companies/list": {
+        "\/admin\/companies\/list": {
             "post": {
-                "summary": "列表",
-                "x-apifox-folder": "Admin/AdminEmployee/CompaniesController",
-                "description": "列表",
                 "tags": [
-                    "Admin/AdminEmployee/CompaniesController"
+                    "Admin\/CompaniesController"
                 ],
-                "parameters": [],
+                "summary": "列表",
+                "description": "列表",
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
+                                "required": [],
                                 "type": "object",
                                 "properties": {
                                     "name": {
                                         "type": "string",
-                                        "description": "模糊搜索：名称"
+                                        "description": "模糊搜索：名称",
+                                        "required": false
                                     }
-                                },
-                                "required": []
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/admin_employee/companies/store": {
+        "\/admin\/companies\/store": {
             "post": {
-                "summary": "添加",
-                "x-apifox-folder": "Admin/AdminEmployee/CompaniesController",
-                "description": "添加",
                 "tags": [
-                    "Admin/AdminEmployee/CompaniesController"
+                    "Admin\/CompaniesController"
                 ],
-                "parameters": [],
+                "summary": "添加",
+                "description": "添加",
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
+                                "required": [
+                                    "bosses_id",
+                                    "name"
+                                ],
                                 "type": "object",
                                 "properties": {
                                     "bosses_id": {
                                         "type": "integer",
-                                        "description": "所属老板"
+                                        "description": "所属老板",
+                                        "required": true
                                     },
                                     "name": {
                                         "type": "string",
-                                        "description": "名字"
-                                    },
-                                    "deleted_at": {
-                                        "type": "date",
-                                        "description": ""
-                                    },
-                                    "created_at": {
-                                        "type": "date",
-                                        "description": ""
-                                    },
-                                    "updated_at": {
-                                        "type": "date",
-                                        "description": ""
+                                        "description": "名字",
+                                        "required": true
                                     }
-                                },
-                                "required": [
-                                    "bosses_id",
-                                    "name"
-                                ]
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/admin_employee/companies/update": {
+        "\/admin\/companies\/update": {
             "post": {
-                "summary": "修改",
-                "x-apifox-folder": "Admin/AdminEmployee/CompaniesController",
-                "description": "修改",
                 "tags": [
-                    "Admin/AdminEmployee/CompaniesController"
+                    "Admin\/CompaniesController"
                 ],
-                "parameters": [],
+                "summary": "修改",
+                "description": "修改",
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "type": "integer",
-                                        "description": "id"
-                                    },
-                                    "bosses_id": {
-                                        "type": "integer",
-                                        "description": "所属老板"
-                                    },
-                                    "name": {
-                                        "type": "string",
-                                        "description": "名字"
-                                    },
-                                    "deleted_at": {
-                                        "type": "date",
-                                        "description": ""
-                                    },
-                                    "created_at": {
-                                        "type": "date",
-                                        "description": ""
-                                    },
-                                    "updated_at": {
-                                        "type": "date",
-                                        "description": ""
-                                    }
-                                },
                                 "required": [
                                     "id",
                                     "bosses_id",
                                     "name"
-                                ]
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "description": "id",
+                                        "required": true
+                                    },
+                                    "bosses_id": {
+                                        "type": "integer",
+                                        "description": "所属老板",
+                                        "required": true
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "description": "名字",
+                                        "required": true
+                                    }
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/admin_employee/companies/show": {
+        "\/admin\/companies\/show": {
             "post": {
+                "tags": [
+                    "Admin\/CompaniesController"
+                ],
                 "summary": "查看",
-                "x-apifox-folder": "Admin/AdminEmployee/CompaniesController",
                 "description": "查看",
-                "tags": [
-                    "Admin/AdminEmployee/CompaniesController"
-                ],
-                "parameters": [],
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
+                                "required": [
+                                    "id"
+                                ],
                                 "type": "object",
                                 "properties": {
                                     "id": {
                                         "type": "integer",
-                                        "description": "id"
+                                        "description": "id",
+                                        "required": true
                                     }
-                                },
-                                "required": [
-                                    "id"
-                                ]
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/admin_employee/companies/soft_delete": {
+        "\/admin\/companies\/soft_delete": {
             "post": {
+                "tags": [
+                    "Admin\/CompaniesController"
+                ],
                 "summary": "删除",
-                "x-apifox-folder": "Admin/AdminEmployee/CompaniesController",
                 "description": "删除",
-                "tags": [
-                    "Admin/AdminEmployee/CompaniesController"
-                ],
-                "parameters": [],
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
+                                "required": [
+                                    "id"
+                                ],
                                 "type": "object",
                                 "properties": {
                                     "id": {
                                         "type": "integer",
-                                        "description": "id"
+                                        "description": "id",
+                                        "required": true
                                     }
-                                },
-                                "required": [
-                                    "id"
-                                ]
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/admin_employee/companies/restore": {
+        "\/admin\/companies\/restore": {
             "post": {
+                "tags": [
+                    "Admin\/CompaniesController"
+                ],
                 "summary": "恢复软删除",
-                "x-apifox-folder": "Admin/AdminEmployee/CompaniesController",
                 "description": "恢复软删除",
-                "tags": [
-                    "Admin/AdminEmployee/CompaniesController"
-                ],
-                "parameters": [],
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
+                                "required": [
+                                    "id"
+                                ],
                                 "type": "object",
                                 "properties": {
                                     "id": {
                                         "type": "integer",
-                                        "description": "id"
+                                        "description": "id",
+                                        "required": true
                                     }
-                                },
-                                "required": [
-                                    "id"
-                                ]
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/admin_employee/companies/delete": {
+        "\/admin\/companies\/delete": {
             "post": {
+                "tags": [
+                    "Admin\/CompaniesController"
+                ],
                 "summary": "强制删除",
-                "x-apifox-folder": "Admin/AdminEmployee/CompaniesController",
                 "description": "强制删除",
-                "tags": [
-                    "Admin/AdminEmployee/CompaniesController"
-                ],
-                "parameters": [],
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
+                                "required": [
+                                    "id"
+                                ],
                                 "type": "object",
                                 "properties": {
                                     "id": {
                                         "type": "integer",
-                                        "description": "id"
+                                        "description": "id",
+                                        "required": true
                                     }
-                                },
-                                "required": [
-                                    "id"
-                                ]
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/admin_employee/girls/list": {
+        "\/admin\/girls\/list": {
             "post": {
+                "tags": [
+                    "Admin\/GirlsController"
+                ],
                 "summary": "列表",
-                "x-apifox-folder": "Admin/AdminEmployee/GirlsController",
                 "description": "列表",
-                "tags": [
-                    "Admin/AdminEmployee/GirlsController"
-                ],
-                "parameters": [],
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
+                                "required": [],
                                 "type": "object",
                                 "properties": {
                                     "name": {
                                         "type": "string",
-                                        "description": "模糊搜索：名称"
+                                        "description": "模糊搜索：名称",
+                                        "required": false
                                     }
-                                },
-                                "required": []
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/admin_employee/girls/store": {
+        "\/admin\/girls\/store": {
             "post": {
-                "summary": "添加",
-                "x-apifox-folder": "Admin/AdminEmployee/GirlsController",
-                "description": "添加",
                 "tags": [
-                    "Admin/AdminEmployee/GirlsController"
+                    "Admin\/GirlsController"
                 ],
-                "parameters": [],
+                "summary": "添加",
+                "description": "添加",
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "type": {
-                                        "type": "string",
-                                        "description": "类型:Value1,Value2"
-                                    },
-                                    "name": {
-                                        "type": "string",
-                                        "description": "名字"
-                                    },
-                                    "phone": {
-                                        "type": "string",
-                                        "description": "手机号"
-                                    }
-                                },
                                 "required": [
                                     "type",
                                     "name",
                                     "phone"
-                                ]
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "description": "类型:Value1,Value2",
+                                        "required": true
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "description": "名字",
+                                        "required": true
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "description": "手机号",
+                                        "required": true
+                                    }
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/admin_employee/girls/update": {
+        "\/admin\/girls\/update": {
             "post": {
-                "summary": "修改",
-                "x-apifox-folder": "Admin/AdminEmployee/GirlsController",
-                "description": "修改",
                 "tags": [
-                    "Admin/AdminEmployee/GirlsController"
+                    "Admin\/GirlsController"
                 ],
-                "parameters": [],
+                "summary": "修改",
+                "description": "修改",
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "type": "integer",
-                                        "description": "id"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "description": "类型:Value1,Value2"
-                                    },
-                                    "name": {
-                                        "type": "string",
-                                        "description": "名字"
-                                    },
-                                    "phone": {
-                                        "type": "string",
-                                        "description": "手机号"
-                                    }
-                                },
                                 "required": [
                                     "id",
                                     "type",
                                     "name",
                                     "phone"
-                                ]
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "default": {
-                        "$ref": "#/components/responses/default"
-                    }
-                }
-            }
-        },
-        "/admin/admin_employee/girls/show": {
-            "post": {
-                "summary": "查看",
-                "x-apifox-folder": "Admin/AdminEmployee/GirlsController",
-                "description": "查看",
-                "tags": [
-                    "Admin/AdminEmployee/GirlsController"
-                ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/x-www-form-urlencoded": {
-                            "schema": {
+                                ],
                                 "type": "object",
                                 "properties": {
                                     "id": {
                                         "type": "integer",
-                                        "description": "id"
-                                    }
-                                },
-                                "required": [
-                                    "id"
-                                ]
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "default": {
-                        "$ref": "#/components/responses/default"
-                    }
-                }
-            }
-        },
-        "/admin/admin_employee/girls/delete": {
-            "post": {
-                "summary": "删除",
-                "x-apifox-folder": "Admin/AdminEmployee/GirlsController",
-                "description": "删除",
-                "tags": [
-                    "Admin/AdminEmployee/GirlsController"
-                ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/x-www-form-urlencoded": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "type": "integer",
-                                        "description": "id"
-                                    }
-                                },
-                                "required": [
-                                    "id"
-                                ]
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "default": {
-                        "$ref": "#/components/responses/default"
-                    }
-                }
-            }
-        },
-        "/admin/hellos/list": {
-            "post": {
-                "summary": "列表",
-                "x-apifox-folder": "Admin/HellosController",
-                "description": "列表",
-                "tags": [
-                    "Admin/HellosController"
-                ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/x-www-form-urlencoded": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
+                                        "description": "id",
+                                        "required": true
+                                    },
+                                    "type": {
                                         "type": "string",
-                                        "description": "模糊搜索：名称"
-                                    }
-                                },
-                                "required": []
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "default": {
-                        "$ref": "#/components/responses/default"
-                    }
-                }
-            }
-        },
-        "/admin/hellos/store": {
-            "post": {
-                "summary": "添加",
-                "x-apifox-folder": "Admin/HellosController",
-                "description": "添加",
-                "tags": [
-                    "Admin/HellosController"
-                ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/x-www-form-urlencoded": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "description": ""
-                                    }
-                                },
-                                "required": [
-                                    "name"
-                                ]
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "default": {
-                        "$ref": "#/components/responses/default"
-                    }
-                }
-            }
-        },
-        "/admin/hellos/update": {
-            "post": {
-                "summary": "修改",
-                "x-apifox-folder": "Admin/HellosController",
-                "description": "修改",
-                "tags": [
-                    "Admin/HellosController"
-                ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/x-www-form-urlencoded": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "type": "integer",
-                                        "description": "id"
+                                        "description": "类型:Value1,Value2",
+                                        "required": true
                                     },
                                     "name": {
                                         "type": "string",
-                                        "description": ""
+                                        "description": "名字",
+                                        "required": true
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "description": "手机号",
+                                        "required": true
                                     }
-                                },
-                                "required": [
-                                    "id",
-                                    "name"
-                                ]
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/hellos/show": {
+        "\/admin\/girls\/show": {
             "post": {
+                "tags": [
+                    "Admin\/GirlsController"
+                ],
                 "summary": "查看",
-                "x-apifox-folder": "Admin/HellosController",
                 "description": "查看",
-                "tags": [
-                    "Admin/HellosController"
-                ],
-                "parameters": [],
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
+                                "required": [
+                                    "id"
+                                ],
                                 "type": "object",
                                 "properties": {
                                     "id": {
                                         "type": "integer",
-                                        "description": "id"
+                                        "description": "id",
+                                        "required": true
                                     }
-                                },
-                                "required": [
-                                    "id"
-                                ]
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         },
-        "/admin/hellos/delete": {
+        "\/admin\/girls\/delete": {
             "post": {
-                "summary": "删除",
-                "x-apifox-folder": "Admin/HellosController",
-                "description": "删除",
                 "tags": [
-                    "Admin/HellosController"
+                    "Admin\/GirlsController"
                 ],
-                "parameters": [],
+                "summary": "删除",
+                "description": "删除",
                 "requestBody": {
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application\/x-www-form-urlencoded": {
                             "schema": {
+                                "required": [
+                                    "id"
+                                ],
                                 "type": "object",
                                 "properties": {
                                     "id": {
                                         "type": "integer",
-                                        "description": "id"
+                                        "description": "id",
+                                        "required": true
                                     }
-                                },
-                                "required": [
-                                    "id"
-                                ]
+                                }
                             }
                         }
                     }
                 },
                 "responses": {
                     "default": {
-                        "$ref": "#/components/responses/default"
+                        "$ref": "#\/components\/responses\/default"
                     }
                 }
             }
         }
     },
     "components": {
+        "schemas": {
+            "bosses": {
+                "required": [
+                    "id",
+                    "name"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "bigint",
+                        "description": null,
+                        "required": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "名字",
+                        "required": true
+                    },
+                    "created_at": {
+                        "type": "datetime",
+                        "description": null,
+                        "required": false
+                    },
+                    "updated_at": {
+                        "type": "datetime",
+                        "description": null,
+                        "required": false
+                    }
+                },
+                "description": "老板"
+            },
+            "bosses_has_girls": {
+                "required": [
+                    "bosses_id",
+                    "girls_id"
+                ],
+                "type": "object",
+                "properties": {
+                    "bosses_id": {
+                        "type": "bigint",
+                        "description": "老板",
+                        "required": true
+                    },
+                    "girls_id": {
+                        "type": "bigint",
+                        "description": "女孩",
+                        "required": true
+                    }
+                },
+                "description": "老板和女孩的关系"
+            },
+            "companies": {
+                "required": [
+                    "id",
+                    "bosses_id",
+                    "name"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "bigint",
+                        "description": null,
+                        "required": true
+                    },
+                    "bosses_id": {
+                        "type": "bigint",
+                        "description": "所属老板",
+                        "required": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "名字",
+                        "required": true
+                    },
+                    "deleted_at": {
+                        "type": "datetime",
+                        "description": null,
+                        "required": false
+                    },
+                    "created_at": {
+                        "type": "datetime",
+                        "description": null,
+                        "required": false
+                    },
+                    "updated_at": {
+                        "type": "datetime",
+                        "description": null,
+                        "required": false
+                    }
+                },
+                "description": "公司"
+            },
+            "failed_jobs": {
+                "required": [
+                    "id",
+                    "uuid",
+                    "connection",
+                    "queue",
+                    "payload",
+                    "exception",
+                    "failed_at"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "bigint",
+                        "description": null,
+                        "required": true
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": null,
+                        "required": true
+                    },
+                    "connection": {
+                        "type": "text",
+                        "description": null,
+                        "required": true
+                    },
+                    "queue": {
+                        "type": "text",
+                        "description": null,
+                        "required": true
+                    },
+                    "payload": {
+                        "type": "text",
+                        "description": null,
+                        "required": true
+                    },
+                    "exception": {
+                        "type": "text",
+                        "description": null,
+                        "required": true
+                    },
+                    "failed_at": {
+                        "type": "datetime",
+                        "description": null,
+                        "required": true
+                    }
+                },
+                "description": ""
+            },
+            "girls": {
+                "required": [
+                    "id",
+                    "type",
+                    "name",
+                    "phone"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "bigint",
+                        "description": null,
+                        "required": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "类型:Value1,Value2",
+                        "required": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "名字",
+                        "required": true
+                    },
+                    "phone": {
+                        "type": "string",
+                        "description": "手机号",
+                        "required": true
+                    },
+                    "created_at": {
+                        "type": "datetime",
+                        "description": null,
+                        "required": false
+                    },
+                    "updated_at": {
+                        "type": "datetime",
+                        "description": null,
+                        "required": false
+                    }
+                },
+                "description": "女孩"
+            },
+            "hellos": {
+                "required": [
+                    "id",
+                    "name"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "bigint",
+                        "description": null,
+                        "required": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": null,
+                        "required": true
+                    },
+                    "created_at": {
+                        "type": "datetime",
+                        "description": null,
+                        "required": false
+                    },
+                    "updated_at": {
+                        "type": "datetime",
+                        "description": null,
+                        "required": false
+                    }
+                },
+                "description": ""
+            },
+            "migrations": {
+                "required": [
+                    "id",
+                    "migration",
+                    "batch"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": null,
+                        "required": true
+                    },
+                    "migration": {
+                        "type": "string",
+                        "description": null,
+                        "required": true
+                    },
+                    "batch": {
+                        "type": "integer",
+                        "description": null,
+                        "required": true
+                    }
+                },
+                "description": ""
+            },
+            "personal_access_tokens": {
+                "required": [
+                    "id",
+                    "tokenable_type",
+                    "tokenable_id",
+                    "name",
+                    "token"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "bigint",
+                        "description": null,
+                        "required": true
+                    },
+                    "tokenable_type": {
+                        "type": "string",
+                        "description": null,
+                        "required": true
+                    },
+                    "tokenable_id": {
+                        "type": "bigint",
+                        "description": null,
+                        "required": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": null,
+                        "required": true
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": null,
+                        "required": true
+                    },
+                    "abilities": {
+                        "type": "text",
+                        "description": null,
+                        "required": false
+                    },
+                    "last_used_at": {
+                        "type": "datetime",
+                        "description": null,
+                        "required": false
+                    },
+                    "expires_at": {
+                        "type": "datetime",
+                        "description": null,
+                        "required": false
+                    },
+                    "created_at": {
+                        "type": "datetime",
+                        "description": null,
+                        "required": false
+                    },
+                    "updated_at": {
+                        "type": "datetime",
+                        "description": null,
+                        "required": false
+                    }
+                },
+                "description": ""
+            }
+        },
         "responses": {
             "default": {
                 "description": "default response",
                 "content": {
-                    "application/json": {
+                    "application\/json": {
                         "schema": {
                             "type": "object",
                             "properties": {
@@ -911,5 +993,23 @@
                 }
             }
         }
-    }
+    },
+    "tags": [
+        {
+            "name": "Admin\/AuthController",
+            "description": "登录鉴权"
+        },
+        {
+            "name": "Admin\/BossesController",
+            "description": "老板"
+        },
+        {
+            "name": "Admin\/CompaniesController",
+            "description": "公司"
+        },
+        {
+            "name": "Admin\/GirlsController",
+            "description": "女孩"
+        }
+    ]
 }
