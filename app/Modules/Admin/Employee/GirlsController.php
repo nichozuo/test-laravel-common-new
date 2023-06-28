@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\Modules\Admin;
+namespace App\Modules\Admin\Employee;
 
 
 use App\Models\Girls;
 use App\Modules\AdminBaseController;
-use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Http\Request;
 use LaravelCommonNew\App\Exceptions\Err;
 
 /**
